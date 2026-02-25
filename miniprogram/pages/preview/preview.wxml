@@ -1,0 +1,27 @@
+<view class="page safe-bottom">
+  <view class="header">
+    <text class="title">预览与调整</text>
+  </view>
+
+  <view class="photo-panel">
+    <image src="{{imagePath}}" class="photo" mode="aspectFit"></image>
+  </view>
+
+  <view class="meta">
+    <text>尺寸：{{selectedSizeText}}</text>
+    <text>背景：{{selectedBackgroundText}}</text>
+  </view>
+
+  <view class="controls">
+    <view class="control" bindtap="onCrop">裁剪</view>
+    <view class="control" bindtap="onReposition">移动</view>
+  </view>
+
+  <view class="beauty-row">
+    <text>美颜优化</text>
+    <switch checked="{{beautyEnabled}}" color="#0F766E" bindchange="toggleBeauty" />
+  </view>
+
+  <button class="ghost" bindtap="regenerate">重新生成</button>
+  <button class="primary" bindtap="download">下载照片</button>
+</view>

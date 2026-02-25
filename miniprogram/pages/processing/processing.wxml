@@ -1,0 +1,19 @@
+<view class="page safe-bottom">
+  <view wx:if="{{status === 'loading'}}" class="state-card">
+    <view class="spinner-wrap">
+      <view class="spinner"></view>
+    </view>
+    <text class="title">正在智能生成</text>
+    <text class="desc">请稍候片刻</text>
+    <text class="sub">正在优化图像质量与人像细节</text>
+  </view>
+
+  <view wx:if="{{status === 'fail'}}" class="state-card">
+    <text class="fail-icon">⚠</text>
+    <text class="title">生成失败</text>
+    <text class="desc">请重试或重新上传照片</text>
+
+    <button class="primary" bindtap="retry">重试</button>
+    <button class="ghost" bindtap="reupload">重新上传</button>
+  </view>
+</view>

@@ -1,0 +1,10 @@
+<view class="page safe-bottom">
+  <view class="hero-card">
+    <image src="{{imagePath}}" class="hero-photo" mode="aspectFit"></image>
+    <text class="title">证件照已生成</text>
+  </view>
+
+  <button class="primary" bindtap="saveToPhone">保存到手机</button>
+  <button class="ghost" bindtap="createAnother">再生成一张</button>
+  <button class="share" open-type="share">分享给朋友</button>
+</view>

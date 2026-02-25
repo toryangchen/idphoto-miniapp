@@ -1,0 +1,24 @@
+<view class="page safe-bottom">
+  <view class="hero">
+    <text class="badge">智能证件照</text>
+    <text class="title">智能证件照生成器</text>
+    <text class="subtitle">上传自拍，几秒生成可用证件照</text>
+  </view>
+
+  <view class="upload-card" bindtap="choosePhoto">
+    <view class="upload-icon">📷</view>
+    <text class="upload-title">{{hasUpload ? '照片已上传' : '上传照片'}}</text>
+    <text class="upload-meta">支持常见图片格式，建议小于 10 兆</text>
+    <text class="upload-hint">人脸清晰、正对镜头、自然光线更佳</text>
+    <image wx:if="{{hasUpload}}" class="preview-thumb" src="{{imagePath}}" mode="aspectFill"></image>
+  </view>
+
+  <button class="primary-btn {{!hasUpload ? 'is-disabled' : ''}}" bindtap="startMagic">开始生成</button>
+
+  <view class="tips-link" bindtap="showTips">拍照建议</view>
+
+  <view class="privacy">
+    <text>隐私保护 · 安全处理</text>
+    <text>你的照片仅用于本次生成流程</text>
+  </view>
+</view>

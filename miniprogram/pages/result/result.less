@@ -1,0 +1,56 @@
+.page {
+  min-height: 100vh;
+  padding: calc(92rpx + env(safe-area-inset-top)) 34rpx 0;
+}
+
+.hero-card {
+  border-radius: 30rpx;
+  padding: 28rpx;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.84);
+  border: 2rpx solid rgba(255, 255, 255, 0.76);
+  box-shadow: 0 20rpx 46rpx rgba(15, 23, 42, 0.1);
+}
+
+.hero-photo {
+  width: 100%;
+  height: 560rpx;
+  border-radius: 20rpx;
+  background: linear-gradient(180deg, #ecfeff 0%, #e0f2fe 100%);
+}
+
+.title {
+  display: block;
+  margin-top: 20rpx;
+  font-size: 40rpx;
+  font-weight: 800;
+}
+
+.primary,
+.ghost,
+.share {
+  margin-top: 20rpx;
+  border-radius: 999rpx;
+  border: 0;
+}
+
+.primary {
+  color: #fff;
+  background: linear-gradient(100deg, #0f766e 0%, #06b6d4 100%);
+}
+
+.ghost {
+  color: #155e75;
+  background: #ecfeff;
+}
+
+.share {
+  color: #fff;
+  background: linear-gradient(100deg, #ea580c 0%, #f97316 100%);
+}
+
+.primary::after,
+.ghost::after,
+.share::after {
+  border: 0;
+}
