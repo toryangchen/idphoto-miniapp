@@ -1,11 +1,7 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/processing/processing",
-    "pages/size/size",
-    "pages/background/background",
-    "pages/preview/preview",
-    "pages/result/result"
+    "pages/preview/preview"
   ],
   "window": {
     "navigationBarTextStyle": "black",
