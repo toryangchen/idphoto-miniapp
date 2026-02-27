@@ -2,68 +2,63 @@ export {}
 
 const app = getApp<IAppOption>()
 
-const SIZE_LABELS: Record<string, string> = {
-  passport: '护照',
-  visa: '签证',
-  exam: '考试',
-  resume: '简历',
-  custom: '自定义',
-}
-
-const BG_LABELS: Record<string, string> = {
-  white: '白色',
-  blue: '蓝色',
-  red: '红色',
-  custom: '自定义',
+const COLOR_MAP: Record<string, string> = {
+  white: '#f4f4f4',
+  blue: '#4f90db',
+  red: '#e74b4b',
 }
 
 Component({
   data: {
     imagePath: '',
-    selectedSizeText: '未选择',
-    selectedBackgroundText: '白色',
-    beautyEnabled: true,
+    selectedBackground: 'white',
+    previewColor: '#f4f4f4',
+    currentSizeTab: 'one',
   },
 
   lifetimes: {
     attached() {
-      const sizeKey = app.globalData.selectedSize
-      const bgKey = app.globalData.selectedBackground
-
+      const imagePath = app.globalData.generatedImagePath || app.globalData.selectedImagePath || ''
+      const selectedBackground = app.globalData.selectedBackground || 'white'
       this.setData({
-        imagePath: app.globalData.generatedImagePath || app.globalData.selectedImagePath,
-        selectedSizeText: SIZE_LABELS[sizeKey] || '未选择',
-        selectedBackgroundText: BG_LABELS[bgKey] || '白色',
-        beautyEnabled: app.globalData.beautyEnabled,
+        imagePath,
+        selectedBackground,
+        previewColor: COLOR_MAP[selectedBackground] || '#f4f4f4',
       })
     },
   },
 
   methods: {
-    onCrop() {
-      wx.showToast({ title: '裁剪能力下一步接入', icon: 'none' })
+    goBack() {
+      wx.navigateBack()
     },
 
-    onReposition() {
-      wx.showToast({ title: '移动能力下一步接入', icon: 'none' })
+    switchSizeTab(e: WechatMiniprogram.BaseEvent) {
+      const { key } = e.currentTarget.dataset as { key: string }
+      this.setData({ currentSizeTab: key })
     },
 
-    toggleBeauty(e: any) {
-      const beautyEnabled = e.detail.value
-      app.globalData.beautyEnabled = beautyEnabled
-      this.setData({ beautyEnabled })
-    },
-
-    regenerate() {
-      wx.redirectTo({
-        url: '/pages/processing/processing',
+    selectColor(e: WechatMiniprogram.BaseEvent) {
+      const { key } = e.currentTarget.dataset as { key: string }
+      this.setData({
+        selectedBackground: key,
+        previewColor: COLOR_MAP[key] || '#f4f4f4',
       })
+      app.globalData.selectedBackground = key
     },
 
-    download() {
-      wx.navigateTo({
-        url: '/pages/result/result',
+    resetAll() {
+      this.setData({
+        currentSizeTab: 'one',
+        selectedBackground: 'white',
+        previewColor: '#f4f4f4',
       })
+      app.globalData.selectedBackground = 'white'
+      wx.showToast({ title: '已重置', icon: 'none' })
+    },
+
+    savePhoto() {
+      wx.showToast({ title: '保存成功', icon: 'success' })
     },
   },
 })

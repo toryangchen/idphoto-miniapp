@@ -27,33 +27,16 @@ Component({
         success: (res) => {
           const imagePath = res.tempFilePaths[0]
           app.globalData.selectedImagePath = imagePath
+          app.globalData.generatedImagePath = imagePath
           this.setData({
             hasUpload: true,
             imagePath,
           })
+
+          wx.navigateTo({
+            url: '/pages/preview/preview',
+          })
         },
-      })
-    },
-
-    startMagic() {
-      if (!this.data.hasUpload) {
-        wx.showToast({
-          title: '请先上传照片',
-          icon: 'none',
-        })
-        return
-      }
-
-      wx.navigateTo({
-        url: '/pages/processing/processing',
-      })
-    },
-
-    showTips() {
-      wx.showModal({
-        title: '拍照建议',
-        content: '1. 正脸直视镜头\n2. 光线均匀\n3. 避免遮挡五官\n4. 背景尽量简洁',
-        showCancel: false,
       })
     },
   },

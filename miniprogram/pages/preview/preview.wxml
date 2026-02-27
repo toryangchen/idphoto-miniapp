@@ -1,27 +1,52 @@
 <view class="page safe-bottom">
-  <view class="header">
-    <text class="title">预览与调整</text>
+  <view class="topbar">
+    <text class="back" bindtap="goBack">←</text>
+    <text class="top-title">编辑证件照</text>
   </view>
 
-  <view class="photo-panel">
-    <image src="{{imagePath}}" class="photo" mode="aspectFit"></image>
+  <view class="content">
+    <view class="size-tabs">
+      <view class="tab {{currentSizeTab === 'one' ? 'active' : ''}}" data-key="one" bindtap="switchSizeTab">一寸</view>
+      <view class="tab {{currentSizeTab === 'two' ? 'active' : ''}}" data-key="two" bindtap="switchSizeTab">二寸</view>
+      <view class="tab {{currentSizeTab === 'passport' ? 'active' : ''}}" data-key="passport" bindtap="switchSizeTab">护照</view>
+    </view>
+
+    <text class="dpi">295 × 413 px · 300 DPI</text>
+    <text class="spec-title">一寸（295 × 413）</text>
+
+    <view class="photo-wrap" style="background: {{previewColor}};">
+      <image wx:if="{{imagePath}}" src="{{imagePath}}" class="photo" mode="aspectFit"></image>
+
+      <view wx:else class="avatar-placeholder">
+        <view class="head"></view>
+        <view class="body"></view>
+        <view class="v-guide"></view>
+        <view class="h-guide"></view>
+      </view>
+    </view>
+
+    <text class="tip">拖动或双指缩放调整人物位置</text>
+
+    <view class="bg-section">
+      <text class="bg-title">底色</text>
+      <view class="chips">
+        <view class="chip {{selectedBackground === 'white' ? 'selected' : ''}}" data-key="white" bindtap="selectColor">
+          <view class="dot dot-white">
+            <text wx:if="{{selectedBackground === 'white'}}" class="check">✓</text>
+          </view>
+        </view>
+        <view class="chip {{selectedBackground === 'blue' ? 'selected' : ''}}" data-key="blue" bindtap="selectColor">
+          <view class="dot dot-blue"></view>
+        </view>
+        <view class="chip {{selectedBackground === 'red' ? 'selected' : ''}}" data-key="red" bindtap="selectColor">
+          <view class="dot dot-red"></view>
+        </view>
+      </view>
+    </view>
   </view>
 
-  <view class="meta">
-    <text>尺寸：{{selectedSizeText}}</text>
-    <text>背景：{{selectedBackgroundText}}</text>
+  <view class="bottom-bar">
+    <button class="reset" bindtap="resetAll">重置</button>
+    <button class="save" bindtap="savePhoto">保存</button>
   </view>
-
-  <view class="controls">
-    <view class="control" bindtap="onCrop">裁剪</view>
-    <view class="control" bindtap="onReposition">移动</view>
-  </view>
-
-  <view class="beauty-row">
-    <text>美颜优化</text>
-    <switch checked="{{beautyEnabled}}" color="#0F766E" bindchange="toggleBeauty" />
-  </view>
-
-  <button class="ghost" bindtap="regenerate">重新生成</button>
-  <button class="primary" bindtap="download">下载照片</button>
 </view>
