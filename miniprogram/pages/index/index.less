@@ -1,87 +1,138 @@
+.home-page {
+  min-height: 100vh;
+  background: #f7f8fa;
+}
+
 .page {
   min-height: 100vh;
   background: #f7f8fa;
-  padding: 0 44rpx 44rpx;
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  align-items: center;
+}
+
+.page-body {
+  padding: 24rpx 32rpx 40rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
 }
 
 .upload-card {
   width: 100%;
-  margin-top: 40rpx;
   border-radius: 24rpx;
-  background: white;
-  padding: 52rpx;
-  box-sizing: border-box;
-  text-align: center;
-  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.06);
-}
-
-.upload-icon {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 30rpx auto;
-  position: relative;
-}
-
-.icon-main {
-  width: 128rpx;
-  height: 128rpx;
-  display: block;
-}
-
-.icon-sub {
-  width: 48rpx;
-  height: 48rpx;
-  display: block;
-}
-
-.icon-sub-wrap {
-  position: absolute;
-  right: -2px;
-  bottom: -2px;
   background: #fff;
-  border-radius: 999px;
-  padding: 2px;
+  padding: 36rpx 32rpx 32rpx;
+  box-sizing: border-box;
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.06);
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  gap: 12rpx;
+}
+
+.upload-illustration {
+  width: 176rpx;
+  height: 176rpx;
+  margin-top: 2rpx;
+  position: relative;
+  border-radius: 40rpx;
+  background: #eef4ff;
+}
+
+.photo-card {
+  position: absolute;
+  left: 36rpx;
+  top: 28rpx;
+  width: 88rpx;
+  height: 112rpx;
+  border-radius: 20rpx;
+  background: #fff;
+  border: 2rpx solid #c7dcff;
+}
+
+.photo-top {
+  position: absolute;
+  left: 44rpx;
+  top: 40rpx;
+  width: 72rpx;
+  height: 40rpx;
+  border-radius: 12rpx;
+  background: #dfebff;
+}
+
+.photo-sun {
+  position: absolute;
+  right: 50rpx;
+  top: 48rpx;
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+  background: #1677ff;
+}
+
+.photo-mountain {
+  position: absolute;
+  left: 50rpx;
+  top: 82rpx;
+  width: 56rpx;
+  height: 36rpx;
+  background: linear-gradient(180deg, #9ec5ff 0%, #7fb0ff 100%);
+  clip-path: polygon(0 100%, 30% 38%, 56% 72%, 76% 22%, 100% 100%);
+}
+
+.camera-badge {
+  position: absolute;
+  right: 20rpx;
+  bottom: 24rpx;
+  width: 56rpx;
+  height: 44rpx;
+  border-radius: 16rpx;
+  background: #1677ff;
+  box-shadow: 0 8rpx 16rpx rgba(22, 119, 255, 0.22);
+}
+
+.camera-badge::before {
+  content: '';
+  position: absolute;
+  left: 10rpx;
+  top: 8rpx;
+  width: 18rpx;
+  height: 10rpx;
+  border-radius: 6rpx 6rpx 0 0;
+  background: #1677ff;
+}
+
+.camera-lens {
+  position: absolute;
+  left: 20rpx;
+  top: 12rpx;
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+  background: #fff;
 }
 
 .upload-title {
-  display: block;
-  margin-top: 60rpx;
-  color: #111827;
+  color: #1f2a37;
   font-size: 44rpx;
-  font-weight: 700;
+  font-weight: 600;
+  margin-top: 8rpx;
 }
 
 .upload-desc {
-  display: block;
-  margin-top: 36rpx;
-  color: #6b7280;
-  font-size: 32rpx;
+  color: #6b7787;
+  font-size: 28rpx;
 }
 
 .upload-format {
-  display: block;
-  margin-top: 14rpx;
-  color: #98a1af;
-  font-size: 26rpx;
-  font-weight: 600;
-}
-
-.preview-thumb {
-  width: 240rpx;
-  height: 240rpx;
-  border-radius: 24rpx;
-  margin: 30rpx auto 0;
+  color: #9aa6b5;
+  font-size: 24rpx;
+  font-weight: 500;
+  line-height: 1;
 }
 
 .upload-btn {
-  margin-top: 60rpx;
+  margin-top: 18rpx;
   height: 96rpx;
   width: 100% !important;
   line-height: 1;
@@ -89,19 +140,174 @@
   align-items: center;
   justify-content: center;
   border-radius: 28rpx;
-  background: #1677FF;
+  background: #1677ff;
   color: #fff;
-  font-size: 36rpx;
-  font-weight: 700;
+  font-size: 34rpx;
+  font-weight: 600;
 }
 
 .upload-btn::after {
   border: 0;
 }
 
-.privacy {
-  margin-top: auto;
-  color: #9aa3b1;
+.feature-bar,
+.feature-item,
+.flow-row,
+.flow-item {
+  display: flex;
+  align-items: center;
+}
+
+.feature-bar {
+  justify-content: space-between;
+  background: #fff;
+  border-radius: 24rpx;
+  padding: 0 16rpx;
+  height: 80rpx;
+  box-sizing: border-box;
+}
+
+.feature-item {
+  height: 44rpx;
+  justify-content: center;
+  gap: 10rpx;
+  flex: none;
+}
+
+.feature-icon {
+  width: 20rpx;
+  height: 20rpx;
+  display: block;
+  flex: none;
+}
+
+.feature-icon.crop {
+  width: 18rpx;
+  height: 18rpx;
+}
+
+.feature-icon.beauty {
+  width: 24rpx;
+  height: 24rpx;
+}
+
+.feature-label {
+  color: #5d6b7b;
+  font-size: 20rpx;
+  font-weight: 500;
+  line-height: 32rpx;
+}
+
+.content-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.section-title {
+  color: #1f2a37;
+  font-size: 32rpx;
+  font-weight: 600;
+}
+
+.size-row {
+  display: flex;
+  gap: 16rpx;
+  flex-wrap: wrap;
+}
+
+.size-chip {
+  padding: 0 24rpx;
+  height: 60rpx;
+  border-radius: 30rpx;
+  border: 2rpx solid #e2e8f0;
+  color: #6d7a8b;
+  font-size: 24rpx;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+}
+
+.size-chip.active {
+  border-color: #eaf2ff;
+  background: #eaf2ff;
+  color: #1677ff;
+  font-weight: 600;
+}
+
+.example-row {
+  display: flex;
+  gap: 16rpx;
+}
+
+.example-card {
+  flex: 1;
+  background: #fff;
+  border-radius: 24rpx;
+  padding: 8rpx 8rpx 12rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 10rpx;
+}
+
+.example-visual {
+  height: 212rpx;
+  border-radius: 18rpx;
+}
+
+.example-visual.origin {
+  background: linear-gradient(180deg, #d9e8ff 0%, #afcbff 100%);
+}
+
+.example-visual.result {
+  background: linear-gradient(180deg, #ffe4d6 0%, #ffd3bd 100%);
+}
+
+.example-label {
+  color: #7b8794;
+  font-size: 22rpx;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.flow-row {
+  justify-content: space-between;
+  background: #fff;
+  border-radius: 24rpx;
+  padding: 12rpx 20rpx;
+  min-height: 92rpx;
+  box-sizing: border-box;
+}
+
+.flow-item {
+  gap: 10rpx;
+}
+
+.flow-index {
+  width: 32rpx;
+  height: 32rpx;
+  border-radius: 50%;
+  background: #1677ff;
+  color: #fff;
+  font-size: 20rpx;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flow-label {
+  color: #4f5d75;
+  font-size: 22rpx;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.trust-text {
+  color: #8a96a5;
   font-size: 24rpx;
   text-align: center;
+  margin-top: 2rpx;
 }

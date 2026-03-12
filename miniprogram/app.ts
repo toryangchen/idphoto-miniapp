@@ -2,8 +2,8 @@ App<IAppOption>({
   globalData: {
     selectedImagePath: '',
     generatedImagePath: '',
-    selectedSize: '',
-    selectedBackground: 'white',
+    selectedSize: 'one',
+    selectedBackground: 'blue',
     beautyEnabled: true,
   },
 })

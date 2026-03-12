@@ -1,19 +1,62 @@
-<view class="page safe-bottom">
-  <view class="upload-card">
-    <view class="upload-icon">
-      <image class="icon-main" src="/assets/image.svg" mode="aspectFit"></image>
-      <view class="icon-sub-wrap">
-        <image class="icon-sub" src="/assets/camera.svg" mode="aspectFit"></image>
+<view class="page home-page">
+  <view class="page-body safe-bottom">
+    <view class="upload-card">
+      <view class="upload-illustration">
+        <view class="photo-card"></view>
+        <view class="photo-top"></view>
+        <view class="photo-sun"></view>
+        <view class="photo-mountain"></view>
+        <view class="camera-badge">
+          <view class="camera-lens"></view>
+        </view>
+      </view>
+      <text class="upload-title">上传照片</text>
+      <text class="upload-desc">支持相册选择或拍照</text>
+      <text class="upload-format">JPG / PNG</text>
+      <button class="upload-btn" bindtap="choosePhoto">一键上传</button>
+    </view>
+
+    <view class="feature-bar">
+      <view class="feature-item" wx:for="{{features}}" wx:key="key" style="width: {{item.width}}rpx;">
+        <image class="feature-icon {{item.key}}" src="{{item.iconSrc}}" mode="aspectFit"></image>
+        <text class="feature-label">{{item.label}}</text>
       </view>
     </view>
-    <text class="upload-title">上传照片</text>
-    <text class="upload-desc">支持相册选择或拍照</text>
-    <text class="upload-format">JPG / PNG</text>
 
-    <image wx:if="{{hasUpload}}" class="preview-thumb" src="{{imagePath}}" mode="aspectFill"></image>
+    <view class="content-section">
+      <text class="section-title">支持规格</text>
+      <view class="size-row">
+        <view
+          class="size-chip {{selectedSize === item.key ? 'active' : ''}}"
+          wx:for="{{sizeOptions}}"
+          wx:key="key"
+          data-key="{{item.key}}"
+          bindtap="selectSize"
+        >
+          {{item.label}}
+        </view>
+      </view>
+    </view>
 
-    <button class="upload-btn" bindtap="choosePhoto">一键上传</button>
+    <view class="content-section">
+      <text class="section-title">效果示例</text>
+      <view class="example-row">
+        <view class="example-card" wx:for="{{examples}}" wx:key="key">
+          <view class="example-visual {{item.visualClass}}"></view>
+          <text class="example-label">{{item.label}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="content-section">
+      <text class="section-title">使用流程</text>
+      <view class="flow-row">
+        <view class="flow-item" wx:for="{{flowSteps}}" wx:key="key">
+          <view class="flow-index">{{item.index}}</view>
+          <text class="flow-label">{{item.label}}</text>
+        </view>
+      </view>
+      <text class="trust-text">已帮助 12,000+ 用户生成证件照</text>
+    </view>
   </view>
-
-  <text class="privacy">照片仅用于证件照制作，安全保障您的隐私。</text>
 </view>
