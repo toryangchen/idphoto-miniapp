@@ -1,5 +1,5 @@
 <view class="page home-page">
-  <view class="page-body safe-bottom">
+  <view class="home-scroll safe-bottom">
     <view class="upload-card">
       <view class="upload-illustration">
         <view class="photo-card"></view>
@@ -10,21 +10,28 @@
           <view class="camera-lens"></view>
         </view>
       </view>
-      <text class="upload-title">上传照片</text>
-      <text class="upload-desc">支持相册选择或拍照</text>
-      <text class="upload-format">JPG / PNG</text>
-      <button class="upload-btn" bindtap="choosePhoto">一键上传</button>
-    </view>
 
-    <view class="feature-bar">
-      <view class="feature-item" wx:for="{{features}}" wx:key="key" style="width: {{item.width}}rpx;">
-        <image class="feature-icon {{item.key}}" src="{{item.iconSrc}}" mode="aspectFit"></image>
-        <text class="feature-label">{{item.label}}</text>
+      <text class="upload-desc">支持相册选择或拍照</text>
+
+      <button class="upload-btn" bindtap="choosePhoto">上传照片</button>
+
+      <view class="flow-strip">
+        <view class="flow-item" wx:for="{{flowSteps}}" wx:key="key">
+          <view class="flow-index">{{item.index}}</view>
+          <text class="flow-label">{{item.label}}</text>
+        </view>
       </view>
     </view>
 
-    <view class="content-section">
-      <text class="section-title">支持规格</text>
+    <view class="effect-card">
+      <view class="section-row">
+        <text class="section-title">支持规格</text>
+        <view class="more-link">
+          <text class="more-text">更多</text>
+          <text class="more-arrow">›</text>
+        </view>
+      </view>
+
       <view class="size-row">
         <view
           class="size-chip {{selectedSize === item.key ? 'active' : ''}}"
@@ -36,27 +43,43 @@
           {{item.label}}
         </view>
       </view>
-    </view>
 
-    <view class="content-section">
+      <view class="divider-line"></view>
+
       <text class="section-title">效果示例</text>
-      <view class="example-row">
-        <view class="example-card" wx:for="{{examples}}" wx:key="key">
-          <view class="example-visual {{item.visualClass}}"></view>
-          <text class="example-label">{{item.label}}</text>
+      <view class="example-stage">
+        <view class="example-left">
+          <view class="example-left-badge">生活照</view>
+          <view class="example-left-photoframe">
+            <image class="example-left-photo" src="/assets/design/home-life-photo.png" mode="aspectFill"></image>
+          </view>
+        </view>
+
+        <view class="example-arrow">
+          <image
+            class="example-arrow-icon"
+            mode="aspectFit"
+            src="/assets/design/example-arrow.png"
+          ></image>
+        </view>
+
+        <view class="example-right">
+          <view class="example-right-photoframe">
+            <image class="example-right-photo" src="/assets/design/home-id-photo.png" mode="aspectFit"></image>
+          </view>
+        </view>
+
+        <text class="example-note">上传生活照，自动生成规范证件照</text>
+      </view>
+
+      <view class="feature-bar">
+        <view class="feature-item" wx:for="{{features}}" wx:key="key" style="width: {{item.width}}rpx;">
+          <image class="feature-icon" src="{{item.iconSrc}}" mode="aspectFit"></image>
+          <text class="feature-label">{{item.label}}</text>
         </view>
       </view>
     </view>
 
-    <view class="content-section">
-      <text class="section-title">使用流程</text>
-      <view class="flow-row">
-        <view class="flow-item" wx:for="{{flowSteps}}" wx:key="key">
-          <view class="flow-index">{{item.index}}</view>
-          <text class="flow-label">{{item.label}}</text>
-        </view>
-      </view>
-      <text class="trust-text">已帮助 12,000+ 用户生成证件照</text>
-    </view>
+    <text class="trust-text">已帮助 12,000+ 用户生成证件照</text>
   </view>
 </view>

@@ -1,60 +1,74 @@
-<view class="page safe-bottom">
-  <view class="content">
-    <view class="selector" bindtap="chooseSize">
-      <text class="selector-label">{{currentLabel}}</text>
-      <text class="selector-arrow">⌄</text>
+<view class="page preview-page safe-bottom">
+  <view class="status-pill">
+    <image class="status-icon ruler-icon" src="/assets/preview-icons/ruler.svg" mode="aspectFit"></image>
+    <text class="status-main">{{currentLabel}}</text>
+    <view class="status-sep"></view>
+    <text class="status-sub">{{currentSpec}}</text>
+    <view class="status-sep"></view>
+    <text class="status-bg">{{currentBgLabel}}</text>
+  </view>
+
+  <view class="canvas-wrap">
+    <view class="portrait-stage {{stageClass}}" style="background: {{previewColor}};">
+      <image src="{{imagePath}}" class="photo" mode="aspectFit"></image>
     </view>
+  </view>
 
-    <view class="canvas-shell">
-      <view class="canvas-frame">
-        <view class="portrait-stage {{stageClass}}" style="background: {{previewColor}};">
-          <view class="guide-vertical"></view>
-          <view class="guide-horizontal guide-top"></view>
-          <view class="guide-horizontal guide-bottom"></view>
+  <text class="tip">拖动移动人物 · 双指缩放</text>
 
-          <image wx:if="{{imagePath}}" src="{{imagePath}}" class="photo" mode="aspectFit"></image>
+  <view class="sheet">
+    <view class="sheet-block">
+      <view class="sheet-title-row">
+        <image class="status-icon ruler-icon small" src="/assets/preview-icons/ruler.svg" mode="aspectFit"></image>
+        <text class="sheet-title">选择规格</text>
+      </view>
 
-          <view wx:else class="placeholder-copy">
-            <text class="placeholder-text">可拖动缩放</text>
-            <text class="placeholder-text">人物图层</text>
-          </view>
+      <view class="sheet-size-row">
+        <view
+          class="sheet-size-chip {{selectedSize === item.key ? 'active' : ''}}"
+          wx:for="{{sizeOptions}}"
+          wx:key="key"
+          data-key="{{item.key}}"
+          bindtap="selectSize"
+        >
+          {{item.label}}
         </view>
       </view>
     </view>
 
-    <text class="tip">拖动或双指缩放调整人物位置</text>
-  </view>
+    <view class="sheet-block color-block">
+      <view class="sheet-title-row">
+        <image class="status-icon palette-icon" src="/assets/preview-icons/palette.svg" mode="aspectFit"></image>
+        <text class="sheet-title">选择底色</text>
+      </view>
 
-  <view wx:if="{{showBackgroundSheet}}" class="sheet">
-    <view class="sheet-handle"></view>
-    <text class="sheet-title">选择底色</text>
-    <view class="color-row">
-      <view
-        class="color-chip"
-        wx:for="{{backgroundOptions}}"
-        wx:key="key"
-        data-key="{{item.key}}"
-        bindtap="selectColor"
-      >
+      <view class="sheet-color-row">
         <view
-          class="color-dot {{selectedBackground === item.key ? 'active' : ''}}"
-          style="background: {{item.dotColor}}; border-color: {{selectedBackground === item.key ? item.strokeColor : (item.key === 'white' ? '#D1D5DB' : item.strokeColor)}};"
-        ></view>
-        <text class="color-label {{selectedBackground === item.key ? 'selected' : ''}}">{{item.label}}</text>
+          class="sheet-color-chip"
+          wx:for="{{backgroundOptions}}"
+          wx:key="key"
+          data-key="{{item.key}}"
+          bindtap="selectColor"
+        >
+          <view class="sheet-color-outer {{selectedBackground === item.key ? 'active' : ''}}" style="border-color: {{selectedBackground === item.key ? item.strokeColor : 'transparent'}};">
+            <view class="sheet-color-dot" style="background: {{item.dotColor}}; border-color: {{item.key === 'white' ? '#D1D5DB' : item.strokeColor}};">
+              <text wx:if="{{selectedBackground === item.key}}" class="color-check {{item.key === 'white' ? 'dark' : ''}}">✓</text>
+            </view>
+          </view>
+        </view>
       </view>
     </view>
   </view>
 
   <view class="bottom-bar">
-    <button class="bottom-btn secondary" bindtap="toggleBackgroundSheet">
-      <view class="btn-dot"></view>
-      <text class="bottom-btn-text">底色</text>
-    </button>
-    <button class="bottom-btn muted" bindtap="resetAll">
-      <text class="bottom-btn-text">重置</text>
-    </button>
-    <button class="bottom-btn primary" bindtap="savePhoto">
-      <text class="bottom-btn-text">保存</text>
-    </button>
+    <view class="action-btn action-btn-muted auto-btn" bindtap="autoCenter">
+      <text class="action-btn-text muted-text">自动居中</text>
+    </view>
+    <view class="action-btn action-btn-muted reset-btn" bindtap="resetAll">
+      <text class="action-btn-text muted-text">重置</text>
+    </view>
+    <view class="action-btn action-btn-primary save-btn" bindtap="savePhoto">
+      <text class="action-btn-text primary-text">保存</text>
+    </view>
   </view>
 </view>

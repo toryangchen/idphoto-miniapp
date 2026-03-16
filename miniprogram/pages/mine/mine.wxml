@@ -1,0 +1,6 @@
+<view class="page mine-page">
+  <view class="mine-empty">
+    <text class="mine-title">我的</text>
+    <text class="mine-desc">后续功能会在这里继续补齐。</text>
+  </view>
+</view>
